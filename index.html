@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Professionnel Tech</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0070f3;
+            --secondary-color: #00dea3;
+            --accent-color: #ff4081;
+            --background-dark: #0a192f;
+            --text-light: #e6f1ff;
+            --text-muted: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes codeFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            perspective: 1000px;
+        }
+
+        .cv-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .cv-container:hover {
+            transform: rotateX(0) rotateY(0);
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg, 
+                rgba(0,112,243,0.1), 
+                rgba(0,222,163,0.1)
+            );
+            animation: codeFlow 10s linear infinite;
+            background-size: 400% 100%;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 222, 163, 0.3);
+            transition: all 0.5s ease;
+            animation: pulse 3s infinite;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1) rotate(5deg);
+            animation: glitch 1s infinite;
+        }
+
+        .personal-info {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(15, 35, 60, 0.8);
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .tech-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .header, .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="profile-section">
+                <img src="/api/placeholder/250/250" alt="Photo de profil" class="profile-img">
+                <div class="personal-info">
+                    <h1>Mohammed El Barkani</h1>
+                    <p>Étudiant</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:mohammedelbarkani1@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+212663237730"><i class="fas fa-phone"></i></a>
+                    <a href="https://linkedin.com/in/maxime-dubois" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/mohammedelbarkani" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="profile-description">
+                <h2 class="section-title">Profil Professionnel</h2>
+                <p>Expert en infrastructure cloud et cybersécurité avec 10 ans d'expérience. Spécialisé dans l'architecture de systèmes distribués hautement scalables et sécurisés.</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section>
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+                    <div class="timeline-item">
+                        <h3>Architecte Cloud Senior</h3>
+                        <p>TechInnovate Solutions (2019-2024)</p>
+                        <p>Architecture de solutions cloud multi-providers, mise en place de stratégies DevSecOps.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Ingénieur Infrastructure</h3>
+                        <p>CloudMaster Systems (2015-2019)</p>
+                        <p>Conception et optimisation d'infrastructures cloud, automatisation des déploiements.</p>
+                    </div>
+                </section>
+            </div>
+            <div class="right-column">
+                <section>
+                    <h2 class="section-title">Compétences Techniques</h2>
+                    <div class="tech-skills">
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Cybersécurité</span>
+                        <span class="skill-tag">Microservices</span>
+                    </div>
+                </section>
+                <section style="margin-top: 2rem;">
+                    <h2 class="section-title">Formation</h2>
+                    <div class="timeline-item">
+                        <h3>Master Systèmes Cloud & Sécurité</h3>
+                        <p>École Supérieure d'Informatique, 2013-2015</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
